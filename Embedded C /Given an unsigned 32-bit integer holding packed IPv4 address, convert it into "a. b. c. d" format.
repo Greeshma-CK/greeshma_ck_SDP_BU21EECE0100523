@@ -1,0 +1,17 @@
+#include <stdio.h>
+void convertToDottedDecimal(unsigned int packedIP, char *ipString) {
+    unsigned char a = (packedIP >> 24) & 0xFF;
+    unsigned char b = (packedIP >> 16) & 0xFF;
+    unsigned char c = (packedIP >> 8) & 0xFF;
+    unsigned char d = packedIP & 0xFF;
+    sprintf(ipString, "%u.%u.%u.%u", a, b, c, d);
+}
+int main() {
+    unsigned int packedIP;
+    char ipString[16];  // Buffer to hold the resulting "a.b.c.d" string
+    printf("Enter a 32-bit packed IPv4 address: ");
+    scanf("%u", &packedIP);
+    convertToDottedDecimal(packedIP, ipString);
+    printf("The IPv4 address in dotted decimal format is: %s\n", ipString);
+    return 0;
+}
