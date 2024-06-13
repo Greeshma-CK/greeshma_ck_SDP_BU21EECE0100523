@@ -1,0 +1,20 @@
+#include <stdio.h>
+unsigned int clearBits(unsigned int num) 
+    unsigned int mask = ~((1 << 5) | (1 << 18));
+    num &= mask;
+    return num;
+}
+int main() {
+    unsigned int number;
+    printf("Enter a 32-bit unsigned integer: ");
+    scanf("%u", &number);
+    unsigned int newNumber = clearBits(number);
+    printf("The new number with the 6th and 19th bits cleared is: %u\n", newNumber);
+    printf("Binary representation: ");
+    for (int i = 31; i >= 0; i--) {
+        printf("%u", (newNumber >> i) & 1);
+        if (i % 4 == 0) printf(" ");
+    }
+    printf("\n");
+    return 0;
+} 
