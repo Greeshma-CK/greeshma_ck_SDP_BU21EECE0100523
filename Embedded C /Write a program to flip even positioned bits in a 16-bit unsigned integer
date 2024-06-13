@@ -1,0 +1,24 @@
+#include <stdio.h>
+unsigned int flipEvenBits(unsigned int num) {
+    unsigned int mask = 0x5555;  // 0x5555 is 0101 0101 0101 0101 in binary
+    num ^= mask;
+    return num;
+}
+int main() {
+    unsigned int number;
+    printf("Enter a 16-bit unsigned integer: ");
+    scanf("%u", &number);
+    if (number > 0xFFFF) {
+        printf("The entered number is not a 16-bit unsigned integer.\n");
+        return 1;
+    }
+    unsigned int newNumber = flipEvenBits(number);
+    printf("The new number with even positioned bits flipped is: %u\n", newNumber);
+    printf("Binary representation: ");
+    for (int i = 15; i >= 0; i--) {
+        printf("%u", (newNumber >> i) & 1);
+        if (i % 4 == 0) printf(" ");
+    }
+    printf("\n");
+    return 0;
+} 
